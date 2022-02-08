@@ -20,6 +20,6 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         patch-wording: ''
-        minor-wording: '$$BUMP_MINOR$$'
-        major-wording: null
-        rc-wording: '$$BUMP_RC$$'
+        minor-wording: '$$UNSAFE_BUMP_MINOR$$'
+        major-wording: '$$UNSAFE_BUMP_MAJOR$$'
+        rc-wording: '$$UNSAFE_BUMP_RC$$'
