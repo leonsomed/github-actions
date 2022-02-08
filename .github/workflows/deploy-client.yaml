@@ -22,4 +22,4 @@ jobs:
         patch-wording: 'patch,fixes'
         minor-wording: ''
         major-wording: '$$BUMP_MAJOR$$'
-        pre-release-wording: ''
+        rc-wording: ''
