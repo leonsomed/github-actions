@@ -19,7 +19,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        patch-wording: 'patch,fixes'
-        minor-wording: ''
+        patch-wording: ''
+        minor-wording: '$$BUMP_MINOR$$'
         major-wording: '$$BUMP_MAJOR$$'
-        rc-wording: ''
+        rc-wording: '$$BUMP_RC$$'
