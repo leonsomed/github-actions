@@ -43,7 +43,7 @@ jobs:
     - name: Update version
       uses: w9jds/firebase-action@master
       with:
-        args: database:set /appVersion/latest --data \"${{ env.REACT_APP_APP_VERSION }}\" -y
+        args: database:set /appVersion/latest --data '\"${{ env.REACT_APP_APP_VERSION }}\"' -y
       env:
         REACT_APP_APP_VERSION: 1.0.0
         FIREBASE_TOKEN: ${{ secrets.FIREBASE_DEPLOY_TOKEN }}
