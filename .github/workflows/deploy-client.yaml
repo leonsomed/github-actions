@@ -11,14 +11,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: "Output Step"
-      run: echo "the fake secret=${{ secrets.FAKE_DEPLOY_TOKEN }}"
+      run: echo "the fake secret=${{ secrets.DEPLOY_TOKEN_2 }}"
     - name: Checkout code
       uses: actions/checkout@v2
     - name: "Automated Version Bump"
       id: version-bump
       uses: "phips28/gh-action-bump-version@master"
       env:
-        GITHUB_TOKEN: ${{ secrets.DEPLOY_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.DEPLOY_TOKEN_2 }}
       with:
         patch-wording: ''
         minor-wording: '$$UNSAFE_BUMP_MINOR$$'
