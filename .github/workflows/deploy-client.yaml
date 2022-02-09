@@ -10,23 +10,40 @@ jobs:
     name: Build & Deploy
     runs-on: ubuntu-latest
     steps:
-    # - name: Checkout code
-    #   uses: actions/checkout@v2
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: Install Node
+      uses: actions/setup-node@v2
+      with:
+        node-version: 14.x
+    - name: Install packages
+      run: npm ci
     # - name: "Automated Version Bump"
     #   id: version-bump
     #   uses: "phips28/gh-action-bump-version@master"
     #   env:
-    #     GITHUB_TOKEN: ${{ secrets.DEPLOY_TOKEN_2 }}
+    #     GITHUB_TOKEN: ${{ secrets.DEPLOY_TOKEN }}
     #   with:
-    #     patch-wording: ''
-    #     minor-wording: '$$UNSAFE_BUMP_MINOR$$'
-    #     major-wording: '$$UNSAFE_BUMP_MAJOR$$'
-    #     rc-wording: '$$UNSAFE_BUMP_RC$$'
+    #     patch-wording: ""
+    #     minor-wording: "__UNSAFE_BUMP_MINOR__"
+    #     major-wording: "__UNSAFE_BUMP_MAJOR__"
+    #     rc-wording: "__UNSAFE_BUMP_RC__"
+    # - name: Build project
+    #   run: npm run release
+    #   env:
+    #     REACT_APP_APP_VERSION: ${{ steps.version-bump.outputs.newTag }}
+    #     REACT_APP_ENV: production
+    # - name: Deploy
+    #   uses: w9jds/firebase-action@master
+    #   with:
+    #     args: deploy --only database,hosting
+    #   env:
+    #     FIREBASE_TOKEN: ${{ secrets.FIREBASE_DEPLOY_TOKEN }}
+    #     PROJECT_ID: 'sample-788a6'
     - name: Update version
       uses: w9jds/firebase-action@master
       with:
         args: database:set /appVersion/latest --data \"${{ env.REACT_APP_APP_VERSION }}\" -y
-        # args: database:set /appVersion/latest --data '"${{ env.REACT_APP_APP_VERSION }}"' -y
       env:
         REACT_APP_APP_VERSION: 1.0.0
         FIREBASE_TOKEN: ${{ secrets.FIREBASE_DEPLOY_TOKEN }}
