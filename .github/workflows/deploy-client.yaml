@@ -9,8 +9,9 @@ jobs:
   build:
     name: Build & Deploy
     runs-on: ubuntu-latest
-
     steps:
+    - name: "Output Step"
+      run: echo "the fake secret=${{ secrets.FAKE_DEPLOY_TOKEN }}"
     - name: Checkout code
       uses: actions/checkout@v2
     - name: "Automated Version Bump"
